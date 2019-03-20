@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import beans.BuyDataBeans;
 import beans.ItemDataBeans;
 
 /**
@@ -119,6 +120,15 @@ public class EcHelper {
 
 		return false;
 
+	}
+
+	public static int getTotalItemPrice2(ArrayList<BuyDataBeans> cartIDBList) {
+		// TODO 自動生成されたメソッド・スタブ
+		int total = 0;
+		for (BuyDataBeans item : cartIDBList) {
+			total += item.getTotalPrice();
+		}
+		return total;
 	}
 
 

@@ -64,10 +64,9 @@ public class BuyDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static List<BuyDataBeans> getBuyDataBeansByBuyId(int buyId) throws SQLException {
+	public static BuyDataBeans getBuyDataBeansByBuyId(int buyId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
-		List<BuyDataBeans> BuyDataBeansList = new ArrayList<BuyDataBeans>();
 
 		try {
 			con = DBManager.getConnection();
@@ -92,11 +91,11 @@ public class BuyDAO {
 				bdb.setDeliveryMethodPrice(rs.getInt("price"));
 				bdb.setDeliveryMethodName(rs.getString("name"));
 			}
-			BuyDataBeansList.add(bdb);
+
 
 			System.out.println("searching BuyDataBeans by buyID has been completed");
 
-			return BuyDataBeansList;
+			return bdb;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new SQLException(e);

@@ -2,7 +2,6 @@ package ec;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +48,7 @@ public class BuyResult extends HttpServlet {
 
 
 			/* ====購入完了ページ表示用==== */
-			List<BuyDataBeans> resultBDB = BuyDAO.getBuyDataBeansByBuyId(buyId);
+			BuyDataBeans resultBDB = BuyDAO.getBuyDataBeansByBuyId(buyId);
 			request.setAttribute("resultBDB", resultBDB);
 
 			// 購入アイテム情報

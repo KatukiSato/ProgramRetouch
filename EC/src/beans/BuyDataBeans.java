@@ -20,7 +20,6 @@ public class BuyDataBeans  implements Serializable {
 	private String deliveryMethodName;
 	private int deliveryMethodPrice;
 
-
 	public int getId() {
 		return id;
 	}
@@ -70,6 +69,20 @@ public class BuyDataBeans  implements Serializable {
 	public void setDeliveryMethodPrice(int deliveryMethodPrice) {
 		this.deliveryMethodPrice = deliveryMethodPrice;
 	}
+
+	//	作ったもの
+//	public String getItemName() {
+//		return ItemName;
+//	}
+//	public void setItemName(String itemName) {
+//		this.ItemName = itemName;
+//	}
+//	public int getItemPrice() {
+//		return ItemPrice;
+//	}
+//	public void setItemPrice(int itemPrice) {
+//		this.ItemPrice = itemPrice;
+//	}
 
 
 }

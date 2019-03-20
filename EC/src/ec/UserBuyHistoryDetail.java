@@ -1,6 +1,7 @@
 package ec;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.BuyDataBeans;
-import dao.UserBuyHistryDAO;
+import beans.ItemDataBeans;
+import dao.BuyDetailDAO;
 
 /**
  * 購入履歴画面
@@ -28,22 +30,23 @@ public class UserBuyHistoryDetail extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 
-			String buyId = request.getParameter("buy_id");
-			UserBuyHistryDAO bdb = new UserBuyHistryDAO();
+			int buyId = Integer.parseInt( request.getParameter("buy_id"));
+			BuyDetailDAO bdb = new BuyDetailDAO();
 			List<BuyDataBeans> bdbList =  bdb.History(buyId);
 			session.setAttribute("buyIDBListHistory", bdbList);
 
-			String ItemId = request.getParameter("itemid");
-			List<BuyDataBeans> bdbItemList =  bdb.ItemHistory(ItemId);
+			ArrayList<ItemDataBeans> bdbItemList =  BuyDetailDAO.getItemDataBeansListByBuyId(buyId);
 
-//			ArrayList<BuyDataBeans> cartIDBList = (ArrayList<BuyDataBeans>) bdbItemList;
 			session.setAttribute("buyIDBListItemHistory", bdbItemList);
 
+
+			ArrayList<BuyDataBeans> bdbDeliveryList =  (ArrayList<BuyDataBeans>) bdb.ItemHistory(buyId);
+			session.setAttribute("buyIDBListDeliveryHistory", bdbDeliveryList);
+//			ArrayList<BuyDataBeans> cartIDBList = (ArrayList<BuyDataBeans>) bdbItemList;
 //			int inputDeliveryMethodId = Integer.parseInt(request.getParameter("buy_id"));
 //			DeliveryMethodDataBeans userSelectDMB = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputDeliveryMethodId);
-
 //
-//			int totalPrice = EcHelper.getTotalItemPrice(cartIDBList);
+//			int totalPrice = EcHelper.getTotalItemPrice2(cartIDBList);
 //
 //			BuyDataBeans Bdb = new BuyDataBeans();
 //			Bdb.setUserId((int) session.getAttribute("userId"));
