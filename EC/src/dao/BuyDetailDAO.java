@@ -85,13 +85,13 @@ public class BuyDetailDAO {
 		}
 	}
 
-	 /**
-     * 購入IDによる購入詳細情報検索
-     * @param buyId
-     * @return buyDetailItemList ArrayList<ItemDataBeans>
-     *             購入詳細情報のデータを持つJavaBeansのリスト
-     * @throws SQLException
-     */
+	/**
+	 * 購入IDによる購入詳細情報検索
+	 * @param buyId
+	 * @return buyDetailItemList ArrayList<ItemDataBeans>
+	 *             購入詳細情報のデータを持つJavaBeansのリスト
+	 * @throws SQLException
+	 */
 	public static ArrayList<ItemDataBeans> getItemDataBeansListByBuyId(int buyId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
@@ -100,12 +100,12 @@ public class BuyDetailDAO {
 
 			st = con.prepareStatement(
 					"SELECT m_item.id,"
-					+ " m_item.name,"
-					+ " m_item.price"
-					+ " FROM t_buy_detail"
-					+ " JOIN m_item"
-					+ " ON t_buy_detail.item_id = m_item.id"
-					+ " WHERE t_buy_detail.buy_id = ?");
+							+ " m_item.name,"
+							+ " m_item.price"
+							+ " FROM t_buy_detail"
+							+ " JOIN m_item"
+							+ " ON t_buy_detail.item_id = m_item.id"
+							+ " WHERE t_buy_detail.buy_id = ?");
 			st.setInt(1, buyId);
 
 			ResultSet rs = st.executeQuery();
@@ -116,7 +116,6 @@ public class BuyDetailDAO {
 				idb.setId(rs.getInt("id"));
 				idb.setName(rs.getString("name"));
 				idb.setPrice(rs.getInt("price"));
-
 
 				buyDetailItemList.add(idb);
 			}
@@ -151,10 +150,7 @@ public class BuyDetailDAO {
 							+ " JOIN m_delivery_method"
 							+ " ON t_buy.delivery_method_id = m_delivery_method.id"
 							+ " WHERE t_buy.id = ?");
-			//					"select * from t_buy"
-			//							+"JOIN m_delivery_method"
-			//							+"on t_buy.delivery_method_id = m_delivery_method.id"
-			//							+" WHERE t_buy.id = ?");
+
 			st.setInt(1,buyId);
 			ResultSet rs = st.executeQuery();
 
@@ -170,8 +166,6 @@ public class BuyDetailDAO {
 
 				BuyDataBeansList.add(bdb);
 			}
-
-
 
 			System.out.println("表示に成功しました。");
 
@@ -199,14 +193,10 @@ public class BuyDetailDAO {
 
 			st = con.prepareStatement(
 					"select "
-							+ " t_buy.create_date, m_delivery_method.name,  m_delivery_method.price"
+							+ " t_buy.create_date, m_delivery_method.name, m_delivery_method.price"
 							+ " from t_buy"
-//							+ " join t_buy_detail "
-//							+ " on t_buy.id = t_buy_detail.buy_id"
 							+ " inner join m_delivery_method"
 							+ " on t_buy.delivery_method_id = m_delivery_method.id"
-//							+ " inner join m_item"
-//							+ " on t_buy_detail.item_id = m_item.id"
 							+ " WHERE t_buy.id= ?");
 
 			st.setInt(1,buyId);
@@ -215,20 +205,13 @@ public class BuyDetailDAO {
 			while (rs.next()) {
 
 				BuyDataBeans bdb = new BuyDataBeans();
-				//				bdb.setId(rs.getInt("id"));
-//				bdb.setTotalPrice(rs.getInt("total_price"));
 				bdb.setBuyDate(rs.getTimestamp("create_date"));
-//				bdb.setItemName(rs.getString("m_item.name"));
-//				bdb.setItemPrice(rs.getInt("m_item.price"));
 				bdb.setDeliveryMethodPrice(rs.getInt("price"));
 				bdb.setDeliveryMethodName(rs.getString("name"));
 
 				ItemDataBeansList.add(bdb);
 
-
 			}
-
-
 
 			System.out.println("表示に成功したんですよ！");
 

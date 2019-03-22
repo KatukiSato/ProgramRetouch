@@ -39,26 +39,8 @@ public class UserBuyHistoryDetail extends HttpServlet {
 
 			session.setAttribute("buyIDBListItemHistory", bdbItemList);
 
-
 			ArrayList<BuyDataBeans> bdbDeliveryList =  (ArrayList<BuyDataBeans>) bdb.ItemHistory(buyId);
 			session.setAttribute("buyIDBListDeliveryHistory", bdbDeliveryList);
-//			ArrayList<BuyDataBeans> cartIDBList = (ArrayList<BuyDataBeans>) bdbItemList;
-//			int inputDeliveryMethodId = Integer.parseInt(request.getParameter("buy_id"));
-//			DeliveryMethodDataBeans userSelectDMB = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputDeliveryMethodId);
-//
-//			int totalPrice = EcHelper.getTotalItemPrice2(cartIDBList);
-//
-//			BuyDataBeans Bdb = new BuyDataBeans();
-//			Bdb.setUserId((int) session.getAttribute("userId"));
-//			Bdb.setTotalPrice(totalPrice+userSelectDMB.getPrice());
-//			Bdb.setDelivertMethodId(userSelectDMB.getId());
-//			Bdb.setDeliveryMethodName(userSelectDMB.getName());
-//			Bdb.setDeliveryMethodPrice(userSelectDMB.getPrice());
-//
-//
-//
-//			//購入確定で利用
-//			session.setAttribute("bdb", Bdb);
 
 			request.getRequestDispatcher(EcHelper.USER_BUY_HISTORY_DETAIL_PAGE).forward(request, response);
 

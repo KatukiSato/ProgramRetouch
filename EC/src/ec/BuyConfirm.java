@@ -43,8 +43,6 @@ public class BuyConfirm extends HttpServlet {
 			bdb.setDeliveryMethodName(userSelectDMB.getName());
 			bdb.setDeliveryMethodPrice(userSelectDMB.getPrice());
 
-
-
 			//購入確定で利用
 			session.setAttribute("bdb", bdb);
 			request.getRequestDispatcher(EcHelper.BUY_CONFIRM_PAGE).forward(request, response);

@@ -39,7 +39,6 @@ public class BuyDataBeans  implements Serializable {
 		this.totalPrice = totalPrice;
 	}
 
-
 	public int getDelivertMethodId() {
 		return delivertMethodId;
 	}
@@ -69,20 +68,5 @@ public class BuyDataBeans  implements Serializable {
 	public void setDeliveryMethodPrice(int deliveryMethodPrice) {
 		this.deliveryMethodPrice = deliveryMethodPrice;
 	}
-
-	//	作ったもの
-//	public String getItemName() {
-//		return ItemName;
-//	}
-//	public void setItemName(String itemName) {
-//		this.ItemName = itemName;
-//	}
-//	public int getItemPrice() {
-//		return ItemPrice;
-//	}
-//	public void setItemPrice(int itemPrice) {
-//		this.ItemPrice = itemPrice;
-//	}
-
 
 }

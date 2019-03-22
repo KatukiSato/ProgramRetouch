@@ -16,8 +16,6 @@ import beans.ItemDataBeans;
  */
 public class ItemDAO {
 
-
-
 	/**
 	 * ランダムで引数指定分のItemDataBeansを取得
 	 * @param limit 取得したいかず
@@ -118,7 +116,6 @@ public class ItemDAO {
 				st.setInt(1, startiItemNum);
 				st.setInt(2, pageMaxItemCount);
 			} else {
-				// 商品名検索　いじる所はココ？
 				st = con.prepareStatement("SELECT * FROM m_item WHERE name LIKE ?  ORDER BY id ASC LIMIT ?,? ");
 				st.setString(1,"%" + searchWord + "%");
 				st.setInt(2, startiItemNum);

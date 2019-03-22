@@ -46,7 +46,6 @@ public class BuyResult extends HttpServlet {
 				BuyDetailDAO.insertBuyDetail(bddb);
 			}
 
-
 			/* ====購入完了ページ表示用==== */
 			BuyDataBeans resultBDB = BuyDAO.getBuyDataBeansByBuyId(buyId);
 			request.setAttribute("resultBDB", resultBDB);
